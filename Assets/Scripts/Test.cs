@@ -22,7 +22,7 @@ public class Test : MonoBehaviour
 
         // for (int i = 0; i < datas.Count; i++)
         // {
-            datas[0].Log();
+            datas[1].Log();
         // }
     }
 

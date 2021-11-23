@@ -6,34 +6,34 @@ using System.Data;
 //一条福费廷数据
 public class FFT_Data
 {
-    public string systemNum;//系统编号 0
-    public string saleBank;//卖出行 1
-    public string acceptingBank;//承兑行 2
-    public string creditNum;//信用证号 3
-    public string applicant;//申请人 4
-    public string beneficiary;//受益人 5
-    public string commodity;//商品 6
-    public string termOfCredit;//信用证期限 7
-    public MoneyNum invoiceValue;//发票金额 8
-    public MoneyNum amountOfCredit;//信用证金额 9
-    public MoneyNum remainMoney;//余额 10
-    public string beginDate;//起息日 11
-    public string endDate;//到期日 12
-    public int extraDate;//宽限期 13
-    public int dayCount;//天数 14
-    public PercentNum rate;//利率 15
-    public PercentNum chargeRate;//手续费率 16
-    public PercentNum ftp;// 17
-    public PercentNum allRate;//综合利率 18
-    public PercentNum incomeRate;//净收入率 19
-    public MoneyNum interest;//利息 20
-    public MoneyNum charge;//手续费 21
-    public MoneyNum totalCost;//费用合计 23
-    public MoneyNum totalIncome;//经营净收入 24
-    public MoneyNum discountAmount;//贴现金额 25
-    public PercentNum transactionPrice;//成交价格 26
-    public string issuingDate;//开证日期 27
-    public string validity;//有效期 28
+    public string systemNum;//系统编号 1
+    public string saleBank;//卖出行 2
+    public string acceptingBank;//承兑行 3
+    public string creditNum;//信用证号 4
+    public string applicant;//申请人 5
+    public string beneficiary;//受益人 6
+    public string commodity;//商品 7
+    public string termOfCredit;//信用证期限 8
+    public MoneyNum invoiceValue;//发票金额 9
+    public MoneyNum amountOfCredit;//信用证金额 10
+    public MoneyNum remainMoney;//余额 11
+    public string beginDate;//起息日 12
+    public string endDate;//到期日 13
+    public int extraDate;//宽限期 14
+    public int dayCount;//天数 15
+    public PercentNum rate;//利率 16
+    public PercentNum chargeRate;//手续费率 17
+    public PercentNum ftp;// 18
+    public PercentNum allRate;//综合利率 19
+    public PercentNum incomeRate;//净收入率 20
+    public MoneyNum interest;//利息 21
+    public MoneyNum charge;//手续费 22
+    public MoneyNum totalCost;//费用合计 24
+    public MoneyNum totalIncome;//经营净收入 25
+    public MoneyNum discountAmount;//贴现金额 26
+    public PercentNum transactionPrice;//成交价格 27
+    public string issuingDate;//开证日期 28
+    public string validity;//有效期 29
 
 
     public FFT_Data(DataRow dataRow){
@@ -66,9 +66,6 @@ public class FFT_Data
         this.issuingDate = dataRow[27].ToString();
         this.validity = dataRow[28].ToString();
     }
-
-
-
 
     // public ParticleSystemRingBufferMode 
     public void Log(){

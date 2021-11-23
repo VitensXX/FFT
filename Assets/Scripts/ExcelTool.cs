@@ -82,4 +82,22 @@ public class ExcelTool {
             }
         }
     }
+
+    public static void WritExcelOneRow(string filePath, int row, int[] cols, string[] vals){
+        FileInfo xlsxFile = new FileInfo(filePath);
+        if (xlsxFile.Exists){
+            using (ExcelPackage package = new ExcelPackage(xlsxFile))
+            {
+                //修改excel的第一个sheet，下标从1开始
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                for (int i = 0; i < cols.Length; i++)
+                {
+                    worksheet.Cells[row, cols[i]].Value = vals[i];
+                }
+                package.Save();
+                Debug.Log("WriteToExcel Success");
+            }
+        }
+    }
+
 }
