@@ -20,7 +20,11 @@ public class EnteringNormalCtrl : MonoBehaviour
 
             if(title == "ftp"){
                 _enteringItemCtrl.Add(EnteringItem_Rate.Show(ftpAnchor, title));
-            }else{
+            }
+            else if(title == "商品"){
+                _enteringItemCtrl.Add(EnteringItem_Select.Show(grid, title));
+            }
+            else{
                 if(Define.EnteringNormal_LableIndex.Contains(index)){
                     _enteringItemCtrl.Add(EnteringItem_Label.Show(grid, title));
                 }
