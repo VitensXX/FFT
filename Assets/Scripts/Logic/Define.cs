@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Define
 {
-    public static string[] commodityTypes = new string[]{
+    public static List<string> commodityTypes = new List<string>{
         "货物贸易", "服务贸易", "融资租赁"
     };
 
