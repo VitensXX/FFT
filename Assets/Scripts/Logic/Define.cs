@@ -11,24 +11,38 @@ public class Define
 
     //基础录入数据母表表头
     public static string[] EnteringNormalTitles = new string[]{
-        "系统编号", "卖出行", "承兑行", "信用证号", "申请人", "受益人", "商品", "信用证期限",
-        "发票金额","信用证金额","承兑金额","起息日","到期日","宽限期","贴现天数","手续费率","ftp",
-        "综合利率","利息","手续费","费用合计","贴现金额","开证日期","有效期"
+        "系统编号1", "卖出行2", "承兑行3", "信用证号4", "申请人5", "受益人6",
+        "商品7", "商品备注8", "信用证期限9","发票金额10","信用证金额11","承兑金额12",
+        "起息日13","到期日14","宽限期15","贴现天数16","手续费率18","ftp19","开证日期25","有效期26"
     };
 
     public static int[] EnteringNormalTitlesIndex = new int[]{
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,18,19,21,22,24,26,28,29
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,25,26
     };
 
     public static List<int> EnteringNormal_LableIndex = new List<int>{
-        1,2,3,4,5,6,7,8, 12,13,14,15,28,29
+        1,2,3,4,5,6,7,8,9,13,14,15,16,25,26
     };
 
     public static List<int> EnteringNormal_MoneyIndex = new List<int>{
-        9,10,11,21,22,24,26
+        10,11,12,
     };
 
     public static List<int> EnteringNormal_RateIndex = new List<int>{
-        16,17,18,19
+        18,19
     };
+
+    static int[] _enteringNormalTitlesIndex;
+
+    public static int[] GetEnteringNormalTitlesIndex(){
+        if(_enteringNormalTitlesIndex == null){
+            _enteringNormalTitlesIndex = new int[EnteringNormalTitles.Length];
+            for (int i = 0; i < _enteringNormalTitlesIndex.Length; i++)
+            {
+                _enteringNormalTitlesIndex[i] = i+1;
+            }
+        }
+
+        return _enteringNormalTitlesIndex;
+    }
 }

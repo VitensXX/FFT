@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //常规输入界面
 public class EnteringNormalCtrl : MonoBehaviour
@@ -18,7 +19,7 @@ public class EnteringNormalCtrl : MonoBehaviour
             int index = Define.EnteringNormalTitlesIndex[i];
             string title = Define.EnteringNormalTitles[i];
 
-            if(title == "ftp"){
+            if(title.Contains("ftp")){
                 _enteringItemCtrl.Add(EnteringItem_Rate.Show(ftpAnchor, title));
             }
             else if(title == "商品"){
@@ -49,6 +50,7 @@ public class EnteringNormalCtrl : MonoBehaviour
 
     //点击录入
     public void OnClickEntering(){
-        ExcelTool.WritExcelOneRow("Assets/Resources/Excel/FFT_all.xlsx", 30, Define.EnteringNormalTitlesIndex, GetAllInputVals());
+        ExcelTool.WritExcelOneRow("Assets/Resources/Excel/all_1129.xlsx", 1666, Define.EnteringNormalTitlesIndex, GetAllInputVals());
+        transform.Find("Button/Text").GetComponent<Text>().text = "OK";
     }
 }

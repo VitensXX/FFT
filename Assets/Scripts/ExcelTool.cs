@@ -88,15 +88,21 @@ public class ExcelTool {
         if (xlsxFile.Exists){
             using (ExcelPackage package = new ExcelPackage(xlsxFile))
             {
+                Debug.LogError( package.Workbook.Worksheets.Count);
                 //修改excel的第一个sheet，下标从1开始
-                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
-                for (int i = 0; i < cols.Length; i++)
-                {
-                    worksheet.Cells[row, cols[i]].Value = vals[i];
-                }
+                // ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                // for (int i = 0; i < cols.Length; i++)
+                // {
+                    // worksheet.Cells[row, cols[i]].Value = vals[i];
+                    // worksheet.Cells[1666, 1].Value = 88;
+                    // break;
+                // }
                 package.Save();
                 Debug.Log("WriteToExcel Success");
             }
+        }
+        else{
+            Debug.LogError("Error:"+filePath);
         }
     }
 
