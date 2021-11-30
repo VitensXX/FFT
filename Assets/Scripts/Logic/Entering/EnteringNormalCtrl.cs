@@ -11,7 +11,19 @@ public class EnteringNormalCtrl : MonoBehaviour
 
     List<IGetValue> _enteringItemCtrl = new List<IGetValue>();
 
-    void Start()
+    public static EnteringNormalCtrl Show(Transform parent){
+        GameObject item = Instantiate(Resources.Load("Prefabs/Entering/EnteringNormal") as GameObject);
+        EnteringNormalCtrl ctrl = item.GetComponent<EnteringNormalCtrl>();
+        RectTransform ts = (RectTransform)item.transform;
+        ts.SetParent(parent);
+        ts.offsetMax = Vector2.zero;
+        ts.offsetMin = Vector2.zero;
+        ts.localScale = Vector3.one;
+        ctrl.Init();
+        return ctrl;
+    }
+
+    void Init()
     {
         _enteringItemCtrl.Clear();
         for (int i = 0; i < Define.EnteringNormalTitles.Length; i++)
@@ -52,5 +64,9 @@ public class EnteringNormalCtrl : MonoBehaviour
     public void OnClickEntering(){
         ExcelTool.WritExcelOneRow("Assets/Resources/Excel/all_1129.xlsx", 1666, Define.EnteringNormalTitlesIndex, GetAllInputVals());
         transform.Find("Button/Text").GetComponent<Text>().text = "OK";
+    }
+
+    public void OnClickBack(){
+        GameObject.Destroy(gameObject);
     }
 }
