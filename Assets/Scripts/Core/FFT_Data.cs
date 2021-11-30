@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Data;
 
 //一条福费廷数据
+[System.Serializable]
 public class FFT_Data
 {
     public string systemNum;//系统编号 1
@@ -36,6 +37,7 @@ public class FFT_Data
     public string issuingDate;//开证日期 25
     public string validity;//有效期 26
 
+    public FFT_Data(){}
 
     public FFT_Data(DataRow dataRow){
         int i = 0;

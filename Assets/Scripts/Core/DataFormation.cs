@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class MoneyNum
 {
     long _num;
@@ -37,12 +38,13 @@ public class MoneyNum
 
 }
 
+[System.Serializable]
 public class PercentNum{
     int _num;
     public PercentNum(string input){
         try{
             input = input.TrimEnd('%');
-            _num = Mathf.RoundToInt(float.Parse(input) * 100);
+            _num = Mathf.RoundToInt(float.Parse(input));
         }
         catch{
             // Debug.LogError("PercentNum:"+input);
@@ -50,7 +52,7 @@ public class PercentNum{
         }
     }
 
-    public string Val => (_num * 0.01f) + "%";
+    public string Val => (_num * 0.01f).ToString("0.00") + "%";
 
     public override string ToString(){
         return Val;
