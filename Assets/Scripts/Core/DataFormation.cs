@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class MoneyNum
@@ -27,6 +28,10 @@ public class MoneyNum
         }
     }
 
+    public MoneyNum(long num){
+        _num = num;
+    }
+
     public override string ToString(){
         return Val.ToString("0.00");
     }
@@ -40,11 +45,11 @@ public class MoneyNum
 
 [System.Serializable]
 public class PercentNum{
-    int _num;
+    float _num;//百分数*100的值 去掉百分号的
     public PercentNum(string input){
         try{
             input = input.TrimEnd('%');
-            _num = Mathf.RoundToInt(float.Parse(input));
+            _num = float.Parse(input);
         }
         catch{
             // Debug.LogError("PercentNum:"+input);
@@ -52,9 +57,67 @@ public class PercentNum{
         }
     }
 
-    public string Val => (_num * 0.01f).ToString("0.00") + "%";
+    public float num => _num;
+
+    public string Val => _num.ToString("0.00") + "%";
+
 
     public override string ToString(){
         return Val;
+    }
+}
+
+[System.Serializable]
+public class IntNum{
+    int _num;
+    public IntNum(string input){
+        try{
+            _num = int.Parse(input);
+        }
+        catch{
+            _num = 0;
+        }
+    }
+
+    public IntNum(int num){
+        _num = num;
+    }
+
+    public int num => _num;
+
+    public override string ToString()
+    {
+        return _num.ToString();
+    }
+}
+
+[System.Serializable]
+public class DateNum{
+    DateTime _date;
+    public DateNum(string input){
+        try{
+            _date = DateTime.Parse(input);
+        }
+        catch{
+            _date = new DateTime();
+        }
+    }
+
+    public DateTime date => _date;
+
+    public override string ToString()
+    {
+        DateTime cur = DateTime.Today;
+        return _date.ToString();// + "  距离现在多少天:"+ _date.Subtract(cur).Days+"!!!!!!";
+    }
+
+    //返回此日期与当天的天数差,正表示此日期还未到,负表示已经超了
+    public int GetSubDayToToday(){
+        return _date.Subtract(DateTime.Today).Days;
+    }
+
+    //得到到期日与起始日之间的天数差
+    public static int GetDeltaDay(DateNum begin, DateNum end){
+        return end.date.Subtract(begin.date).Days;
     }
 }

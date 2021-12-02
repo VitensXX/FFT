@@ -18,7 +18,7 @@ public class Test : MonoBehaviour
         // DataRowCollection rows = ExcelTool.ReadExcel("Assets/Resources/Excel/FFT_all.xlsx");
         // for (int i = 1; i < 3; i++)
         // {
-        //     datas.Add(new FFT_Data(rows[i]));
+            // datas.Add(new FFT_Data(rows[i]));
         // }
 
         // for (int i = 0; i < datas.Count; i++)

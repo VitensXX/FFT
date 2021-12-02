@@ -63,7 +63,34 @@ public class ExcelTool {
         // rowNum = result.Tables[0].Rows.Count;
 
         // Debug.LogError(result.Tables[0].Rows.Count+" "+result.Tables[0].Columns.Count);
-        return result.Tables[0].Rows;
+        return result.Tables[0].Rows; 
+    }
+
+    public static void Import(string filePath, DataManager manager){
+        FileStream stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+        DataSet result = excelReader.AsDataSet();
+        
+        // manager.datas = 
+        List<FFT_Data> datas = new List<FFT_Data>();
+        DataRowCollection collection = result.Tables[0].Rows;
+        //0是表头 所以从1开始
+        for (int i = 1; i < collection.Count; i++)
+        {
+            FFT_Data data = new FFT_Data(collection[i]);
+            if(!string.IsNullOrEmpty(data.systemNum)){
+                datas.Add(data);
+            }
+        }
+        manager.Import(datas);
+
+        // manager.fft_DataManager.datas = datas.ToArray();
+
+        Debug.LogError("保存完毕");
+        for (int i = 0; i <  manager.importDatas.Count; i++)
+        {
+            manager.importDatas[i].Log();
+        }
     }
 
     public static void WriteExcel(string filePath, int row, int col, string val){
@@ -97,6 +124,31 @@ public class ExcelTool {
                     // worksheet.Cells[1666, 1].Value = 88;
                     // break;
                 // }
+                package.Save();
+                Debug.Log("WriteToExcel Success");
+            }
+        }
+        else{
+            Debug.LogError("Error:"+filePath);
+        }
+    }
+
+    public static void WriteExcelRows(string filePath, int startRow, int totalCount, string[,] vals){
+        FileInfo xlsxFile = new FileInfo(filePath);
+        if (xlsxFile.Exists){
+            using (ExcelPackage package = new ExcelPackage(xlsxFile))
+            {
+                Debug.LogError("startRow:"+startRow);
+                //修改excel的第一个sheet，下标从1开始
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                // int oneRowCount = cols.Length / totalCount;
+                for (int i = 0; i < totalCount; i++)
+                {
+                    for (int j = 0; j < DataManager.ROW_COUNT; j++)
+                    {
+                        worksheet.Cells[startRow + i, j+1].Value = vals[i,j];
+                    }
+                }
                 package.Save();
                 Debug.Log("WriteToExcel Success");
             }

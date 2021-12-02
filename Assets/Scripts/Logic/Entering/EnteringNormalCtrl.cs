@@ -62,8 +62,24 @@ public class EnteringNormalCtrl : MonoBehaviour
 
     //点击录入
     public void OnClickEntering(){
-        ExcelTool.WritExcelOneRow("Assets/Resources/Excel/all_1129.xlsx", 1666, Define.EnteringNormalTitlesIndex, GetAllInputVals());
-        transform.Find("Button/Text").GetComponent<Text>().text = "OK";
+        FFT_Data data = new FFT_Data(GetAllInputVals());
+        DataManager.inst.enteringDatas.Add(data);
+        // ExcelTool.WritExcelOneRow("Assets/Resources/Excel/all_1129.xlsx", 1666, Define.EnteringNormalTitlesIndex, GetAllInputVals());
+        // transform.Find("Button/Text").GetComponent<Text>().text = "OK";
+    }
+
+    public void OnClickWriteToExcel(){
+        int enteringDatasCount = DataManager.inst.enteringDatas.Count;
+        if(enteringDatasCount == 0){
+            Debug.LogError("没有录入数据, 没法写入");
+            return;
+        }
+        ExcelTool.WriteExcelRows(DataManager.EXCEL_PATH, DataManager.inst.GetFFTDataCount() + 2, 
+            enteringDatasCount, DataManager.inst.GetEnteringStr());
+
+        DataManager.inst.PutEnteringToImport();
+
+        Debug.LogError("写入Execel完成");
     }
 
     public void OnClickBack(){
