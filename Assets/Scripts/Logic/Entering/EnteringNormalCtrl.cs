@@ -33,6 +33,7 @@ public class EnteringNormalCtrl : MonoBehaviour
 
             if(title.Contains("ftp")){
                 _enteringItemCtrl.Add(EnteringItem_Rate.Show(ftpAnchor, title));
+                continue;
             }
             else if(title == "商品"){
                 _enteringItemCtrl.Add(EnteringItem_Select.Show(grid, title));
@@ -49,6 +50,8 @@ public class EnteringNormalCtrl : MonoBehaviour
                 }
             }
         }
+
+        _inputFields = grid.GetComponentsInChildren<InputField>();
     }
 
     string[] GetAllInputVals(){
@@ -85,4 +88,48 @@ public class EnteringNormalCtrl : MonoBehaviour
     public void OnClickBack(){
         GameObject.Destroy(gameObject);
     }
+
+    #region 快捷键
+
+    // List<InputField> inputFields = new List<InputField>();
+    InputField[] _inputFields;
+    int _index;
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Tab)){
+            int index = GetInputFocusIndex();
+            if(index == -1){
+                return;
+            }
+            else{
+                index = ++index % _inputFields.Length;
+                _inputFields[index].ActivateInputField();
+            }
+
+            // _index = ++_index % _inputFields.Length;
+        }
+    }
+
+    int GetInputFocusIndex(){
+        for (int i = 0; i < _inputFields.Length; i++)
+        {
+            if(_inputFields[i].isFocused){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    int GetInputFiledIndex(InputField input){
+        for (int i = 0; i < _inputFields.Length; i++)
+        {
+            if(_inputFields[i] == input){
+                return i;
+            }
+        }
+
+        return 0;
+    }
+         
+    #endregion
 }

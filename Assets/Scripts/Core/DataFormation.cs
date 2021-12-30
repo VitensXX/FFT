@@ -108,7 +108,7 @@ public class DateNum{
     public override string ToString()
     {
         DateTime cur = DateTime.Today;
-        return _date.ToString();// + "  距离现在多少天:"+ _date.Subtract(cur).Days+"!!!!!!";
+        return _date.ToString("yyyy/MM/dd");// + "  距离现在多少天:"+ _date.Subtract(cur).Days+"!!!!!!";
     }
 
     //返回此日期与当天的天数差,正表示此日期还未到,负表示已经超了
