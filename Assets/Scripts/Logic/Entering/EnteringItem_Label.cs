@@ -23,6 +23,10 @@ public class EnteringItem_Label : MonoBehaviour, IGetValue
         _input = transform.Find("InputField").GetComponent<InputField>();
     }
 
+    public void SetValue(string val){
+        _input.text = val;
+    }
+
     public string GetValue(){
         return _input.text;
     }

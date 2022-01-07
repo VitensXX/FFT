@@ -31,4 +31,8 @@ public class EnteringItem_Rate : MonoBehaviour, IGetValue
         return _input.text;
     }
 
+    public void SetValue(string val){
+        _input.text = val;
+    }
+
 }

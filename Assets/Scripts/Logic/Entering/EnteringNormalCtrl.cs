@@ -16,9 +16,7 @@ public class EnteringNormalCtrl : MonoBehaviour
         EnteringNormalCtrl ctrl = item.GetComponent<EnteringNormalCtrl>();
         RectTransform ts = (RectTransform)item.transform;
         ts.SetParent(parent);
-        ts.offsetMax = Vector2.zero;
-        ts.offsetMin = Vector2.zero;
-        ts.localScale = Vector3.one;
+        Common.NormaliseTransform(ts);
         ctrl.Init();
         return ctrl;
     }
@@ -87,6 +85,33 @@ public class EnteringNormalCtrl : MonoBehaviour
 
     public void OnClickBack(){
         GameObject.Destroy(gameObject);
+    }
+
+    public void OnClickShow(){
+        DisplayDataCtrl.Show(transform, DataManager.inst.importDatas, Load);
+    }
+
+    public void Load(FFT_Data data){
+        int index = 0;
+        _enteringItemCtrl[index++].SetValue(data.systemNum);
+        _enteringItemCtrl[index++].SetValue(data.saleBank);
+        _enteringItemCtrl[index++].SetValue(data.acceptingBank);
+        _enteringItemCtrl[index++].SetValue(data.creditNum);
+        _enteringItemCtrl[index++].SetValue(data.applicant);
+        _enteringItemCtrl[index++].SetValue(data.beneficiary);
+        _enteringItemCtrl[index++].SetValue(data.commodity);
+        _enteringItemCtrl[index++].SetValue(data.commodityRemark);
+        _enteringItemCtrl[index++].SetValue(data.termOfCredit);
+        _enteringItemCtrl[index++].SetValue(data.invoiceValue.ToString());
+        _enteringItemCtrl[index++].SetValue(data.amountOfCredit.ToString());
+        _enteringItemCtrl[index++].SetValue(data.remainMoney.ToString());
+        _enteringItemCtrl[index++].SetValue(data.beginDate.ToString());
+        _enteringItemCtrl[index++].SetValue(data.endDate.ToString());
+        _enteringItemCtrl[index++].SetValue(data.extraDate.ToString());
+        _enteringItemCtrl[index++].SetValue(data.chargeRate.ToString());
+        _enteringItemCtrl[index++].SetValue(data.ftp.ToString());
+        _enteringItemCtrl[index++].SetValue(data.issuingDate.ToString());
+        _enteringItemCtrl[index++].SetValue(data.validity.ToString());
     }
 
     #region 快捷键

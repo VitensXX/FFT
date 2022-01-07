@@ -145,10 +145,9 @@ public class FFT_Data
         return arr;
     }
 
-    // public ParticleSystemRingBufferMode 
-    public void Log(){
-        Debug.LogError(
-            "系统编号:"+systemNum + "  "+
+    public override string ToString()
+    {
+        return "系统编号:"+systemNum + "  "+
             "卖出行:"+saleBank + "  "+
             "承兑行:"+acceptingBank + "  "+
             "信用证号:"+creditNum + "  "+
@@ -176,7 +175,11 @@ public class FFT_Data
             "贴现金额:"+discountAmount + "  "+
             // "成交价格:"+transactionPrice + "  "+
             "开证日期:"+issuingDate + "  "+
-            "有效期:"+validity
-        );
+            "有效期:"+validity;
+    }
+
+    // public ParticleSystemRingBufferMode 
+    public void Log(){
+        Debug.LogError(this.ToString());
     }
 }

@@ -28,4 +28,8 @@ public class EnteringItem_Select : MonoBehaviour, IGetValue
     public string GetValue(){
         return Define.commodityTypes[_dropDown.value];
     }
+
+    public void SetValue(string val){
+        _dropDown.value = Define.commodityTypes.IndexOf(val);
+    }
 }

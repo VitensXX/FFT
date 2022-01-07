@@ -31,6 +31,10 @@ public class EnteringItem_Money : MonoBehaviour, IGetValue
         return _input.text;
     }
 
+    public void SetValue(string val){
+        _input.text = val;
+    }
+
     private void Update() {
         string inputStr = _input.text;
         if(!string.IsNullOrEmpty(inputStr)){

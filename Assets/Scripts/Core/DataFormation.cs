@@ -107,7 +107,7 @@ public class DateNum{
 
     public override string ToString()
     {
-        DateTime cur = DateTime.Today;
+        // DateTime cur = DateTime.Today;
         return _date.ToString("yyyy/MM/dd");// + "  距离现在多少天:"+ _date.Subtract(cur).Days+"!!!!!!";
     }
 
