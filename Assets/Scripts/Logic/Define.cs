@@ -13,15 +13,15 @@ public class Define
     public static string[] EnteringNormalTitles = new string[]{
         "系统编号1", "卖出行2", "承兑行3", "信用证号4", "申请人5", "受益人6",
         "商品7", "商品备注8", "信用证期限9","发票金额10","信用证金额11","承兑金额12",
-        "起息日13","到期日14","宽限期15","贴现天数16","手续费率18","ftp19","开证日期25","有效期26"
+        "起息日13","到期日14","宽限期15","手续费率18","ftp19","开证日期25","有效期26"
     };
 
     public static int[] EnteringNormalTitlesIndex = new int[]{
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,25,26
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,18,19,25,26
     };
 
     public static List<int> EnteringNormal_LableIndex = new List<int>{
-        1,2,3,4,5,6,7,8,9,13,14,15,16,25,26
+        1,2,3,4,5,6,7,8,9,13,14,15,25,26
     };
 
     public static List<int> EnteringNormal_MoneyIndex = new List<int>{

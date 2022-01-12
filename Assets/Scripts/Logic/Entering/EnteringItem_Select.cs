@@ -32,4 +32,8 @@ public class EnteringItem_Select : MonoBehaviour, IGetValue
     public void SetValue(string val){
         _dropDown.value = Define.commodityTypes.IndexOf(val);
     }
+
+    public void Clear(){
+        _dropDown.value = 0;
+    }
 }

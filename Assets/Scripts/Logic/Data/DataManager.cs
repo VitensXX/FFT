@@ -54,4 +54,16 @@ public class DataManager
 
         return str;
     }
+
+    //获取
+    // public FFT_Data GetDataInEnterings(string systemNum){
+    //     for (int i = 0; i < _enteringDatas.Count; i++)
+    //     {
+    //         if(_enteringDatas[i].systemNum == systemNum){
+    //             return _enteringDatas[i];
+    //         }
+    //     }
+
+    //     return null;
+    // }
 }

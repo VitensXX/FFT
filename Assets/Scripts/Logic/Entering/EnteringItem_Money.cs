@@ -45,4 +45,8 @@ public class EnteringItem_Money : MonoBehaviour, IGetValue
             _numTip.text = string.Format("{0:N}", 0);
         }
     }
+
+    public void Clear(){
+        _input.text = "";
+    }
 }

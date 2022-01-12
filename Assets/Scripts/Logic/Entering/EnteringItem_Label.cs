@@ -31,4 +31,8 @@ public class EnteringItem_Label : MonoBehaviour, IGetValue
         return _input.text;
     }
 
+    public void Clear(){
+        _input.text = "";
+    }
+
 }
