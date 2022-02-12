@@ -21,11 +21,15 @@ public class Define
     };
 
     public static List<int> EnteringNormal_LableIndex = new List<int>{
-        1,2,3,4,5,6,7,8,9,13,14,15,25,26
+        1,2,3,4,5,6,7,8,9,15
     };
 
     public static List<int> EnteringNormal_MoneyIndex = new List<int>{
-        10,11,12,
+        10,11,12
+    };
+
+    public static List<int> EnteringNormal_DateIndex = new List<int>{
+        13,14,25,26
     };
 
     public static List<int> EnteringNormal_RateIndex = new List<int>{

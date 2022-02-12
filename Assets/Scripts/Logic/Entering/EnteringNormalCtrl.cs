@@ -45,6 +45,9 @@ public class EnteringNormalCtrl : MonoBehaviour
                 else if(Define.EnteringNormal_MoneyIndex.Contains(index)){
                     _enteringItemCtrl.Add(EnteringItem_Money.Show(grid, title));
                 }
+                else if(Define.EnteringNormal_DateIndex.Contains(index)){
+                    _enteringItemCtrl.Add(EnteringItem_Date.Show(grid, title));
+                }
                 else{
                     _enteringItemCtrl.Add(EnteringItem_Rate.Show(grid, title));
                 }
